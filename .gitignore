@@ -1,0 +1,51 @@
+# OS generated files #
+######################
+
+.DS_Store*
+ehthumbs.db
+._*
+*~
+.svn
+.cvs
+*.bak
+*.swp
+Thumbs.db
+.DS_Store
+.idea
+.rocketeer/logs/
+docker-compose.yml
+dev/docker
+
+# Vim generated files #
+#######################
+*.un~
+php.tags
+
+# Packages #
+############
+
+*.7z
+*.dmg
+*.gz
+*.bz2
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.tgz
+
+# Logs and databases #
+######################
+
+*.log
+*.sql
+
+# Processors #
+##############
+
+.sass-cache
+.scssc
+codekit-config.json
+compass_app_log.txt
+dev/composer.phar
