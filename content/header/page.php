@@ -25,7 +25,7 @@ $cta_link = [
 
 ?>
 
-<header <?php echo Util::class_attribute( $classes ); ?>>
+<header id="hero-image" <?php echo Util::class_attribute( $classes ); ?>>
 
 	<?php // Background Image
 	if ( ! empty( $background_img ) ) {
@@ -40,15 +40,35 @@ $cta_link = [
 	?>
 
 	<?php // Banner Overlay
-	printf( '<div class="page-header__overlay utility__gradient--%s"></div>', esc_attr( get_field( 'color_overlay' ) ) ); ?>
+	printf( '<div class="overlay-gradient page-header__overlay utility__gradient--%s"></div>', esc_attr( get_field( 'color_overlay' ) ) ); ?>
+
+	<div class="overlay-shadow"></div>
+
+
+	<?php
+	/**
+	 * REMOVE ONCE TODO FOR FIELD VALUES DONE BELOW
+	*/
+	?>
+	<div class="hero-message">Where do you want to go today?</div>
+	  <div class="hero-message2">SEE PROGRAMS
+	  <div class="down-arrow"></div>
+	</div>
 
 	<div class="content-wrap cw-staggered">
 
-		<?php // Page Title
+		<?php
+		/**
+		 * TODO
+		 * NEED TO FIX EVAL ADMIN USER FIELD
+		 * INSTEAD OF HARD CODING DOM
+		*/
+		?>
+		<!-- <?php // Page Title
 		$title_classes = ['page-header__title h1'];
 		$title_classes[] = sprintf( 'page-header__title--font-%s', esc_attr( $title_font ) );
 		printf( '<h1 %s>%s</h1>', Util::class_attribute( $title_classes ), get_page_title() );
-		?>
+		?> -->
 
 	</div><!-- .content-wrap -->
 

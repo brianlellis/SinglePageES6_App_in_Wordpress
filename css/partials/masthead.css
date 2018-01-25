@@ -12,13 +12,14 @@
 #navigation .logo {
   width: 256px;
   height: auto;
+  display: inline;
 }
 #navigation .menu {
   float: right;
   color: white;
   font-size: 16px;
   background: #007bc3;
-  padding: 19px;
+  padding: 14px 19px;
   border-radius: 5px;
 }
 #navigation .menu .hamburger-menu {
@@ -27,7 +28,7 @@
   cursor: pointer;
   float: left;
   margin-right: 10px;
-  margin-top: 2px;
+  margin-top: 7px;
 }
 #navigation .menu .bar,
 #navigation .menu .bar:after,
