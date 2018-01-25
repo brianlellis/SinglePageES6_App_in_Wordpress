@@ -178,6 +178,7 @@ class Programs_App {
 
     document.body.appendChild(modal);
     this.errorModal = document.getElementById('programs-error-modal');
+    this.errorModal.style = "visibility: hidden";
     this.errorMsg = document.getElementById('error-modal-msg');
 
     // CLICK HANDLE EVENT LISTENER
