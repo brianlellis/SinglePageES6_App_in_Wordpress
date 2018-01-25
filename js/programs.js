@@ -100,7 +100,7 @@ class Programs_App {
             searchParam = Object.keys(data)[0]+"="+data[Object.keys(data)], 
             searchState;
 
-        if ( this.uri.indexOf(data[Object.keys(data)] ) < 0 ) {
+        if ( this.uri.indexOf( `=${data[Object.keys(data)]}` ) < 0 ) {
           this.uri.indexOf('?') < 0 ? searchParam = "?"+searchParam : searchParam = "&"+searchParam;
 
           searchState = (this.uri+searchParam).match(/\?\b[a-z]+(.*)/g);
