@@ -6,14 +6,16 @@ class Programs_App {
    * @property {object}  this.filterBoxes       - Caches the element for future use within the app
    * @property {object}  this.filterSelect      - Caches the element for future use within the app
    * @property {object}  this.errorModal        - Caches the element for future use within the app
+   * @property {object}  this.autoEle           - Caches the element for future use within the app
    * @property {string}  this.errorMsg          - Stores current error msg based on user behavior
    */
   constructor() {
     this.paramEval();
-    this.programs = document.querySelectorAll('.program.card');
-    this.filterBoxes = document.querySelectorAll('.h300 .shown');
+    this.programs     = document.querySelectorAll('.program.card');
+    this.filterBoxes  = document.querySelectorAll('.h300 .shown');
     this.filterSelect = document.querySelectorAll('.select .option');
-    this.errorModal = this.errorMsg = null;
+    this.autoEle      = this.errorModal = this.errorMsg = null;
+    this.autoList     = [];
   }
 
   /**
@@ -24,6 +26,7 @@ class Programs_App {
     this.historyBuilder();
     this.filterBoxOpenClose();
     this.filterParamSelect();
+    this.autoCompCreate();
     this.errorModule();
   }
 
@@ -107,6 +110,52 @@ class Programs_App {
         }
       });
     });
+  }
+
+  /**
+   * @function autoCompCreate
+   * Creates the autoComp input box
+   */
+  autoCompCreate() {
+    const autoBox = document.createElement("input");
+
+    autoBox.id = 'filter-auto-comp';
+    document.querySelectorAll('.h300 .shown')[0].prepend(autoBox);
+
+    this.autoEle = document.getElementById('filter-auto-comp');
+    this.autoEle.addEventListener('click', e=>{ e.stopPropagation(); });
+    this.autoCompList();
+  }
+
+  /**
+   * @function autoCompList
+   * Creates a list for autoComp to ref during event
+   */
+  autoCompList() {
+    this.filterSelect.forEach(v=>{
+      if (v.dataset.destination) this.autoList.push({ id: v.dataset.destination, val: v.innerText});
+    });
+    this.autoComplete();
+  }
+
+  /**
+   * @function autocomplete
+   * Event listener for autoComplete to manipulate filter select DOM
+   */
+  autoComplete() {
+    this.autoEle.onkeyup = e=>{
+      let input_val = e.target.value; // updates the variable on each ocurrence
+
+      if (input_val.length > 0) {
+        this.filterSelect.forEach(v=> {
+          if (v.dataset.destination) v.innerText.indexOf(input_val) < 0 ? v.classList.add('no-display') : v.classList.remove('no-display');
+        });
+      } else {
+        this.filterSelect.forEach(v=> {
+          v.classList.remove('no-display');
+        });
+      }
+    }
   }
 
   /**
