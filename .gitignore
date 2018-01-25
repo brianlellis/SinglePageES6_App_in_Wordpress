@@ -49,3 +49,6 @@ php.tags
 codekit-config.json
 compass_app_log.txt
 dev/composer.phar
+
+node_modules/
+dist/
