@@ -41,6 +41,8 @@ class Programs_App {
   historyBuilder() {
     history.replaceState( { id: 'programs', currentState: this.uri } , document.title , '' );
     window.addEventListener('popstate', function (event) { this.domManip(); }, false);
+
+
   }
 
   /**
@@ -85,7 +87,8 @@ class Programs_App {
     this.filterBoxes.forEach(v=>{
       v.addEventListener('click', event=>{
         document.getElementById('filter-wrapper').classList.toggle('filters-open');
-        this.filterBoxes.forEach(ele=>{ ele.parentNode.classList.toggle('collapsed') })
+        if (window.innerWidth >= 768) this.filterBoxes.forEach(ele=>{ ele.parentNode.classList.toggle('collapsed') });
+        else v.parentNode.classList.toggle('collapsed');
       });
     });
   }
@@ -119,7 +122,7 @@ class Programs_App {
                 rCheck = r.dataset;
 
             if (rCheck[Object.keys(rCheck)] === click[Object.keys(click)]) r.classList.add('active');
-          })
+          });
 
           this.domManip();
         } else {

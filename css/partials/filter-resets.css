@@ -32,3 +32,10 @@
 	content: "X";
 	margin-left: 10px;
 }
+
+@media screen and (max-width: 767px) {
+	#filter-select-resets {
+		margin-top: 30px;
+    	width: 92%;
+	}
+}

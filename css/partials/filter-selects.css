@@ -193,3 +193,25 @@
   border-radius: 5px;
   float: left;
 }
+
+
+@media screen and (max-width: 767px) {
+  #filter-wrapper {
+    width: 100%;
+    display: block;
+  }
+
+  .h300 {
+      max-width: none;
+      width: 100%;
+      float: none;
+      margin-bottom: 15px;
+  }
+
+  .h300 .shown,
+  .h300 .select,
+  .h300 .option {
+      width: 100%;
+      float: none;
+  }
+}
