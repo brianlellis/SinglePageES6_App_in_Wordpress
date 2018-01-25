@@ -1,0 +1,3 @@
+site: trial.dev
+user: admin
+pass: IN2sN8OZa%hM*FJuvo
