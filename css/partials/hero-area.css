@@ -35,6 +35,7 @@
   position: absolute;
   margin: auto;
 }
+.hero-message { line-height: 80px; }
 #hero-image .hero-message2 {
   font-size: 13px;
   opacity: 0.8;
