@@ -1,0 +1,70 @@
+/*===========
+  HERO AREA
+=============*/
+#hero-image {
+  position: relative;
+  overflow: hidden;
+  background: url(https://lh3.googleusercontent.com/MTBBRT1JYGGEEOd_BDIjJrQYNU90toGBQCwEwBbjzQsMsCDNPieFOHeKdTAoh1mHxUMx8hTZfbpJ28oAof_RN7ZEbnQ35Pzdawaw47RgWdzVfmZgHHt1TZfWCJQGXr6NQRKcxdcTazql_1O8nQkJOJFfyVtLVvTToXZ9GE6iHIUBpbjG1RcDsrSWWe1NADDg2fpUZHRj-kYbEAaXsNc4VS6HvjnHRZrW4zGqDxsbnFzItRdQLjZ6Ee_cE5cLOLoY2mjAkZEr1p270QGrFz1GER_DrDL7mPLVCwf-WSvky0bGWH6EUdFrSq7DvHnwhaEOy7SxhRzY-FUGeq9VHClfVkvvW8qpKkQ00GSmVy7XPoJvldQnBIujKVZUuK-o5ZE6IdoBj_4vk7mNYhmeagXsQc5YcFB7zzRt0jq5XRUsf9dKuj2TsS00Z8-h0txp6wBAZSoT_nOOox8DfXfk3BI1wsF_VpTSwZIBjeBcUI05rVOEB8ew748CpKLxH7Pf0GYD-OMonGZnxgFbK0_k5gA3KK8EQuMYR6jQ1FrrDDaTWTpSXKHNV1ZXQke9QivlRr_3Pw5vP2DqzULqnFqv3GL1pkb8ztkfp9WcSIMCwNE=w1447-h814-no);
+  height: 600px;
+}
+#hero-image .overlay {
+  background: linear-gradient(135deg, rgba(134, 43, 137, 0.9) 0%, rgba(215, 27, 93, 0.9) 100%);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+#hero-image .overlay-shadow {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top: 0;
+  -webkit-box-shadow: 0 0 250px 100px rgba(0, 0, 0, 0.6);
+          box-shadow: 0 0 250px 100px rgba(0, 0, 0, 0.6);
+}
+#hero-image .hero-message, #hero-image .hero-message2 {
+  font-size: 70px;
+  color: white;
+  width: 50%;
+  max-width: 650px;
+  text-align: center;
+  z-index: 3;
+  top: 250px;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+}
+#hero-image .hero-message2 {
+  font-size: 13px;
+  opacity: 0.8;
+  top: initial;
+  bottom: 65px;
+  letter-spacing: 1.5px;
+}
+#hero-image .hero-message2 .down-arrow {
+  width: 18px;
+  opacity: 0.8;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+#hero-image .hero-message2 .down-arrow:before, #hero-image .hero-message2 .down-arrow:after {
+  margin-top: 10px;
+  vertical-align: bottom;
+  content: "";
+  width: 2px;
+  height: 20px;
+  background: white;
+}
+#hero-image .hero-message2 .down-arrow:before {
+  -webkit-transform: rotate(60deg);
+          transform: rotate(60deg);
+  float: right;
+}
+#hero-image .hero-message2 .down-arrow:after {
+  -webkit-transform: rotate(-60deg);
+          transform: rotate(-60deg);
+  float: left;
+}

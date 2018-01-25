@@ -1,0 +1,48 @@
+/*===========
+  ERROR MODAL
+=============*/
+body.no-scroll { overflow: hidden !important; } /*SCROLL DISABLE */
+
+#programs-error-modal {
+  box-sizing: border-box;
+  position:fixed; 
+  width: 600px;
+  height: 130px;
+  top:0;
+  left:0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background:rgba(70,80,100,0.9);
+  color:white;
+  font-family: sans-serif;
+  z-index: 999;
+  transition-duration: 500ms;
+  display: block;
+}
+#programs-error-modal.no-display { opacity: 0; }
+#programs-error-modal a {
+  color:white;
+  display:block;
+  margin:auto;
+  width:30px;
+  height:30px;
+  line-height:30px;
+  text-align:center;
+  text-decoration:none;
+  font-size:1em;
+  padding:5px;
+  border:2px solid white;
+  border-radius:50%;
+  text-shadow: 0 0 5px #333;
+  box-shadow:0 0 2px #333;
+}
+#programs-error-modal h1, #programs-error-modal h2 {
+  vertical-align: middle;
+  color: white;
+  text-shadow: 1px 1px 0px #000;
+  text-align:center;
+  margin:20px auto;
+}
+#programs-error-modal h1 { font-size: 30px; }
+#programs-error-modal h2 { font-size: 16px; line-height: 1; cursor: pointer; }
