@@ -32,6 +32,15 @@ class Programs_App {
     this.filterSelectRemove();
     this.autoCompCreate();
     this.errorModule();
+
+    const resizeCheck = this.debounce(function() {
+      this.filterBoxes.forEach(v=>{
+        v.parentNode.classList.add('collapsed');
+        document.getElementById('filter-wrapper').classList.remove('filters-open');
+      }) 
+    }, 250);
+
+    window.addEventListener('resize', resizeCheck);
   }
 
   /**
@@ -41,8 +50,21 @@ class Programs_App {
   historyBuilder() {
     history.replaceState( { id: 'programs', currentState: this.uri } , document.title , '' );
     window.addEventListener('popstate', function (event) { this.domManip(); }, false);
+  }
 
-
+  debounce(func, wait, immediate) {
+      let timeout;
+      return () => {
+        let context = this, args = arguments;
+        let later = function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        };
+        let callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+      };
   }
 
   /**
