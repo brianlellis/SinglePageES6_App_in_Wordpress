@@ -1,5 +1,6 @@
 #  Setup
  * Need wordpress installed
+ * Need Advanced Custom Fields plugin (pro not needed)
  * bring repo into a new custom theme dir
  * import sql.zip into a new empty DB
  * set up wp-config
