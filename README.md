@@ -1,7 +1,10 @@
-#  Modern Tribe Front End Development Trial
-
-
-// needs copy
+#  Setup
+ * Need wordpress installed
+ * bring repo into a new custom theme dir
+ * import sql.zip into a new empty DB
+ * set up wp-config
+ * use db-pass.txt for credentials
+ * yarn install and webpack build task need to be ran first for FED assets
 
 
 ## Changelog
