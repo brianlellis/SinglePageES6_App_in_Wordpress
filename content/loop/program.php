@@ -4,8 +4,8 @@
  */
 
 use Tribe\Project\Theme\Util;
-use Tribe\Project\Taxonomies\Duration;
-use Tribe\Project\Taxonomies\Destination;
+
+$actual_link = Util::url_fetch();
 
 $classes        = [ 'program', 'card' ];
 $cost           = '$' . round( rand( 200, 4000 ), -2 );
@@ -13,23 +13,29 @@ $offered        = [
 	get_field( 'program_start_date' ),
 	get_field( 'program_end_date' )
 ];
-$durations      = wp_get_post_terms( get_the_ID(), Duration::NAME, [ 'fields' => 'all' ] );
+$durations      = Util::get_taxonomy_data('Duration');
+$destinations   = Util::get_taxonomy_data('Destination');
+$destinations_ids   = Util::get_taxonomy_data('Destination', true);
 
-// Setup the Destinations
-$destinations = [];
-$destination_terms = wp_get_post_terms( get_the_ID(), Destination::NAME, [ 'fields' => 'all' ] );
-if ( ! empty( $destination_terms ) ) {
-	foreach ( $destination_terms as $destination ) {
-		$destinations[] = sprintf( '<a href="%s">%s</a>', '#', $destination->name );
-	}
-}
+$age   		= Util::get_taxonomy_data('Age');
+$interest 	= Util::get_taxonomy_data('Interest');
+
+$data_dur 	= Util::get_term_ids('Duration');
+$data_dest	= Util::get_term_ids('Destination');
+$data_age	= Util::get_term_ids('Age');
+$data_int	= Util::get_term_ids('Interest');
+
+$classes[] 	= Util::no_display($actual_link, $data_dur, $data_dest, $data_age, $data_int);
 
 ?>
 
 <article
-	<?php echo Util::class_attribute( $classes ); ?>
+	<?php echo Util::class_attribute( $classes ); ?> 
+	data-duration="<?php echo $data_dur ?>"
+	data-destination="<?php echo $data_dest ?>"
+	data-age="<?php echo $data_age ?>"
+	data-interest="<?php echo $data_int ?>"
 >
-
 	<header>
 		<?php // Feature Image ?>
 		<figure class="program__image card__image">
