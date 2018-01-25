@@ -16,6 +16,7 @@ class Programs_App {
     this.programs     = document.querySelectorAll('.program.card');
     this.filterBoxes  = document.querySelectorAll('.h300 .shown');
     this.filterSelect = document.querySelectorAll('.select .option');
+    this.filterResets = document.querySelectorAll('#filter-select-resets button');
     this.autoEle      = this.errorModal = this.errorMsg = null;
     this.autoList     = [];
   }
@@ -28,6 +29,7 @@ class Programs_App {
     this.historyBuilder();
     this.filterBoxOpenClose();
     this.filterParamSelect();
+    this.filterSelectRemove();
     this.autoCompCreate();
     this.errorModule();
   }
@@ -82,6 +84,7 @@ class Programs_App {
   filterBoxOpenClose() {
     this.filterBoxes.forEach(v=>{
       v.addEventListener('click', event=>{
+        document.getElementById('filter-wrapper').classList.toggle('filters-open');
         this.filterBoxes.forEach(ele=>{ ele.parentNode.classList.toggle('collapsed') })
       });
     });
@@ -92,6 +95,8 @@ class Programs_App {
    * Event listener filtering programs based on selection
    */
   filterParamSelect() {
+    if (document.querySelectorAll('.filter-reset__trigger').length) document.getElementById('filter-wrapper').classList.add('filtered');
+
     this.filterSelect.forEach(v=>{
       v.addEventListener('click', e=>{
         e.stopPropagation();
@@ -106,10 +111,45 @@ class Programs_App {
           searchState = (this.uri+searchParam).match(/\?\b[a-z]+(.*)/g);
 
           history.pushState( { id: 'programs', currentState: searchState } , document.title , this.uri+searchParam );
+          document.getElementById('filter-wrapper').classList.add('filtered');
+
+          //FILTER RESET PROPAGATION
+          this.filterResets.forEach(r=>{
+            let click = e.target.parentNode.dataset,
+                rCheck = r.dataset;
+
+            if (rCheck[Object.keys(rCheck)] === click[Object.keys(click)]) r.classList.add('active');
+          })
+
           this.domManip();
         } else {
           this.errorModuleOpen(Object.keys(data)[0]);
         }
+      });
+    });
+  }
+
+  /**
+   * @function filterSelectRemove
+   * Remove selected filters
+   */
+  filterSelectRemove() {
+    this.filterResets.forEach(v=>{
+      v.addEventListener('click', e=>{
+        e.stopPropagation();
+
+        let searchState = this.uri.match(/\?\b[a-z]+(.*)/g),
+            data = v.dataset,
+            searchParam = Object.keys(data)[0]+"="+data[Object.keys(data)],
+            termIndex = searchState[0].indexOf(searchParam),
+            opRemove = searchState[0].slice(termIndex - 1, termIndex);
+
+            this.uri = window.location.href.replace(opRemove+searchParam, "");
+
+        history.pushState( { id: 'programs', currentState: searchState } , document.title , this.uri);
+        v.classList.remove('active');
+
+        this.domManip();
       });
     });
   }

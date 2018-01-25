@@ -1,6 +1,7 @@
 @import "partials/masthead";
 @import "partials/hero-area";
 @import "partials/filter-selects";
+@import "partials/filter-resets";
 @import "partials/auto-comp";
 @import "partials/error-modal";
 @import "partials/footer";
