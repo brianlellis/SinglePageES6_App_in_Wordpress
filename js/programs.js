@@ -1,3 +1,5 @@
+import "../css/program-styles.css";
+
 /** Class for filtering programs via history state in the browser */
 class Programs_App {
   /**
@@ -20,7 +22,7 @@ class Programs_App {
 
   /**
    * @function initialize
-   * Initializes the Programs_App and it's methods
+   * Initializes the Programs_App and its methods
    */
   initialize() {
     this.historyBuilder();
@@ -117,10 +119,13 @@ class Programs_App {
    * Creates the autoComp input box
    */
   autoCompCreate() {
-    const autoBox = document.createElement("input");
+    const autoBox   = document.createElement("input"),
+          childRef  = document.querySelectorAll('.h300 .select .option')[0],
+          parentRef = childRef.parentNode;
 
     autoBox.id = 'filter-auto-comp';
-    document.querySelectorAll('.h300 .shown')[0].prepend(autoBox);
+    autoBox.placeholder = 'Search';
+    parentRef.insertBefore(autoBox, childRef);
 
     this.autoEle = document.getElementById('filter-auto-comp');
     this.autoEle.addEventListener('click', e=>{ e.stopPropagation(); });
@@ -185,8 +190,8 @@ class Programs_App {
 
   /**
    * @function errorModuleOpen
-   * Blend two colors together.
-   * @param {string} color2 - The second color, in hexadecimal format.
+   * Opens the error modal upon event firing
+   * @param {string} msg - Message to populate the module upon event firing
    */
   errorModuleOpen(msg) {
     document.body.classList.add('no-scroll');
