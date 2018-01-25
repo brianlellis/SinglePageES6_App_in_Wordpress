@@ -145,6 +145,7 @@ class Programs_App {
             opRemove = searchState[0].slice(termIndex - 1, termIndex);
 
             this.uri = window.location.href.replace(opRemove+searchParam, "");
+            this.uri = this.uri.replace('programs/&','programs/?');
 
         history.pushState( { id: 'programs', currentState: searchState } , document.title , this.uri);
         v.classList.remove('active');
