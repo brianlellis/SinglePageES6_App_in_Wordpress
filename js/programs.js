@@ -1,5 +1,3 @@
-import "../css/program-styles.css";
-
 /** Class for filtering programs via history state in the browser */
 class Programs_App {
   /**
@@ -55,7 +53,7 @@ class Programs_App {
    * Add/Remove classes on .program.card ele based on filter selection
    */
   domManip() {
-    this.uri = uri = this.paramEval();
+    this.paramEval();
 
     if (history.state && history.state.id === 'programs') {
       this.programs.forEach(v=>{
@@ -97,8 +95,8 @@ class Programs_App {
             searchParam = Object.keys(data)[0]+"="+data[Object.keys(data)], 
             searchState;
 
-        if ( this.uri.indexOf(data[Object.keys(data)]) < 0 ) {
-          this.uri.indexOf('/?') < 0 ? searchParam = "?"+searchParam : searchParam = "&"+searchParam;
+        if ( this.uri.indexOf(data[Object.keys(data)] ) < 0 ) {
+          this.uri.indexOf('?') < 0 ? searchParam = "?"+searchParam : searchParam = "&"+searchParam;
 
           searchState = (this.uri+searchParam).match(/\?\b[a-z]+(.*)/g);
 
