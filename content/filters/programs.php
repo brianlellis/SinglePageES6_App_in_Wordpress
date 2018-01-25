@@ -18,15 +18,16 @@ echo '<div id="filter-wrapper">';
 				<div class="select collapsed">
 			        <div class="shown">' .
 			        	$value['label']
-			        .'</div>';
+			        .'</div><div class="inner-options">';
+
 
 	        foreach ($value['data'] as $key => $dataval) {
-	        	echo '<div class="option" data-' . $label . '="' . $key . '">'
+	        	echo '<div class="option" data-' . $label . '="' . $key . '"><div class="inner">'
 	        		. $dataval . 
-	        	'</div>';
+	        	'</div></div>';
 	        }
 
-	    echo '</div></div>';
+	    echo '</div></div></div>';
 	}
 echo '</div>';
 

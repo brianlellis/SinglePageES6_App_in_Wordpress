@@ -47,6 +47,10 @@
   margin: 0;
   position: relative;
 }
+.select .inner-options {
+  overflow: scroll;
+  height: 190px;
+}
 
 .select:before {
   content: '';
@@ -96,24 +100,26 @@
   right: 15px;
 }
 
-.option {
-  color: #FFF;
-}
-
 .option,
 .shown {
   width: 170px;
   height: 40px;
   line-height: 40px;
-  padding-left: 15px;
   cursor: pointer;
-  background-color: #34495E;
+  background-color: #FFF;
   text-align: left;
 }
 
+
+.option {
+  color: #494452;
+  padding-left: 7.5px;
+}
 .shown {
   background-color: #FFF;
   font-weight: 400;
+  padding-left: 15px;
+  margin-bottom: 10px;
 }
 
 .styled-select-container {
@@ -163,4 +169,18 @@
   font-size: 16px;
   color: #ffffff;
   outline: none;
+}
+
+.h300 .shown {
+  border-bottom: 1px solid #DDD;
+}
+
+.option .inner {
+  padding: 0 7.5px;
+}
+.option:hover .inner {
+  background: #1c7abf;
+  color: #fff;
+  border-radius: 5px;
+  float: left;
 }
